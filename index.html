@@ -1,0 +1,47 @@
+<html>
+<head>
+
+  <script type="application/javascript">
+//    function hasGetUserMedia() {
+//      return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+//      navigator.mozGetUserMedia || navigator.msGetUserMedia);
+//    }
+//
+//    if (hasGetUserMedia()) {
+//      alert('getUserMedia() is not supported in your browser');
+//    } else {
+//      alert('getUserMedia() is not supported in your browser');
+//    }
+
+
+
+      var errorCallback = function(e) {
+        alert('Reeeejected!', e);
+      };
+
+      navigator.getUserMedia  = navigator.getUserMedia ||
+      navigator.webkitGetUserMedia ||
+      navigator.mozGetUserMedia ||
+      navigator.msGetUserMedia;
+
+      var barcode = document.querySelector('#cameraInput');
+
+      if (navigator.getUserMedia) {
+        navigator.getUserMedia({audio: true, video: true}, function(stream) {
+          barcode.src = window.URL.createObjectURL(stream);
+        }, errorCallback);
+      } else {
+        alert('not working - fallback'); // fallback.
+      }
+  </script>
+</head>
+<body>
+Scan your barcode:<br/>
+<input type="file" accept="image/*;capture=camera" id="cameraInput">
+
+
+
+</body>
+
+</html>
+

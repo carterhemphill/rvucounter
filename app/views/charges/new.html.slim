@@ -6,18 +6,6 @@
     input id="Take-Picture" type="file" accept="image/*;capture=camera"
   #container
     canvas width="320" height="240" id="picture"
-    /= simple_form_for(@charge, html: { class: 'charge-form form-horizontal' }, wrapper: :horizontal_form) do |f|
-    /  = f.error_notification
-    /  .form-inputs
-    /    .control-group
-    /      = f.label :pan
-    /      = f.text_field :pan
-    /    .control-group#charge_code_field
-    /      = f.label :code
-    /      = f.select :code, [["1", 1], ["2", 2]]
-    /  .form-actions
-    /    = f.button :submit, class: 'btn btn-primary'
-    /
 
     = simple_form_for(@charge, html: { class: 'charge-form form-horizontal' }, wrapper: :horizontal_form, \
       wrapper_mappings: { \
@@ -32,7 +20,6 @@
       /= f.input :choices, as: :check_boxes, \
       /   collection: ["Option one is this and that—be sure to include why it's great", "Option two can be something else and selecting it will deselect option one"]
       = f.button :submit
-
 
 script type="application/javascript" src="/assets/barcode/JOB.js"
 script type="application/javascript" src="/assets/barcode/job_upload.js"

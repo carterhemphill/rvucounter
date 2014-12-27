@@ -16,4 +16,11 @@ describe ChargesController do
     end
   end
 
+  describe "#create" do
+    it "assigns a new candidate as @candidate" do
+      get :new, {}
+      expect(assigns(:charge)).to be_a_new(Charge)
+    end
+  end
+
 end

@@ -1,21 +1,23 @@
 var takePicture = document.querySelector("#Take-Picture"),
 showPicture = document.createElement("img");
-Result = document.querySelector("#textbit");
-var canvas =document.getElementById("picture");
+Result = document.querySelector("#charge_pan");
+inputForm = $("#new_charge");
+var canvas = document.getElementById("picture");
 var ctx = canvas.getContext("2d");
-var caseJSON = {};
+
 JOB.Init();
 JOB.SetImageCallback(function(result) {
     if(result.length > 0){
       var tempArray = [];
       for(var i = 0; i < result.length; i++) {
-      tempArray.push(result[i].Format+" : "+result[i].Value);
+        console.log(result[i]);
+        tempArray.push(result[i].Value);
     }
-      Result.innerHTML=tempArray.join("<br />");
-      caseJSON = {pan: tempArray};
+      inputForm.show();
+      Result.value=tempArray.join(", ");
     }else{
       if(result.length === 0) {
-        Result.innerHTML="Decoding failed.";
+        Result.value="Decoding failed.";
       }
     }
     });
@@ -47,7 +49,7 @@ if(takePicture && showPicture) {
         try {
           var URL = window.URL || window.webkitURL;
           showPicture.onload = function(event) {
-            Result.innerHTML="";
+            Result.value="";
             JOB.DecodeImage(showPicture);
             URL.revokeObjectURL(showPicture.src);
           };
@@ -58,7 +60,7 @@ if(takePicture && showPicture) {
             var fileReader = new FileReader();
             fileReader.onload = function (event) {
               showPicture.onload = function(event) {
-                Result.innerHTML="";
+                Result.value="";
                 console.log("filereader");
                 JOB.DecodeImage(showPicture);
               };
@@ -67,7 +69,7 @@ if(takePicture && showPicture) {
             fileReader.readAsDataURL(file);
           }
           catch (e) {
-            Result.innerHTML = "Neither createObjectURL or FileReader are supported";
+            Result.value = "Neither createObjectURL or FileReader are supported";
           }
         }
       }

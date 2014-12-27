@@ -1,0 +1,13 @@
+#container {
+  overflow: hidden;
+}
+#picture, #new_charge {
+  float: left;
+  height: 200px;
+  margin: 20px;
+  padding: 20px;
+
+  .btn { float: right; }
+}
+
+#new_charge { display: none; }

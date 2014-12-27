@@ -1,0 +1,14 @@
+.candidate
+  .page-header.clearfix
+    h3 PAN
+    = @charge.pan
+
+
+  .row-fluid
+    .basics.span5
+      h3 Code
+      = @charge.code
+
+  .row-fluid
+    .span12
+      =link_to 'Create new charge', new_charge_path, class: 'btn btn-default'

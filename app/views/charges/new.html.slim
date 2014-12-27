@@ -1,19 +1,37 @@
 .jumbotron
   h1 RVU Counter
   br
-  p Scan your barcode:
+  p
+    label Scan your barcode:
+    input id="Take-Picture" type="file" accept="image/*;capture=camera"
   #container
     canvas width="320" height="240" id="picture"
-    input id="Take-Picture" type="file" accept="image/*;capture=camera"
-    = form_for @charge do |f|
-      div.field
-        = f.label :pan
-        = f.number_field :pan
-      div.field
-        = f.label :code
-        = f.select :code, [["1", 1], ["2", 2]]
+    /= simple_form_for(@charge, html: { class: 'charge-form form-horizontal' }, wrapper: :horizontal_form) do |f|
+    /  = f.error_notification
+    /  .form-inputs
+    /    .control-group
+    /      = f.label :pan
+    /      = f.text_field :pan
+    /    .control-group#charge_code_field
+    /      = f.label :code
+    /      = f.select :code, [["1", 1], ["2", 2]]
+    /  .form-actions
+    /    = f.button :submit, class: 'btn btn-primary'
+    /
 
-    p#textbit
+    = simple_form_for(@charge, html: { class: 'charge-form form-horizontal' }, wrapper: :horizontal_form, \
+      wrapper_mappings: { \
+        check_boxes: :horizontal_radio_and_checkboxes, \
+        radio_buttons: :horizontal_radio_and_checkboxes, \
+        file: :horizontal_file_input, \
+        boolean: :horizontal_boolean \
+      }) do |f|
+      = f.error_notification
+      = f.input :pan, as: :string
+      = f.input :code, collection: 1800..1900
+      /= f.input :choices, as: :check_boxes, \
+      /   collection: ["Option one is this and that—be sure to include why it's great", "Option two can be something else and selecting it will deselect option one"]
+      = f.button :submit
 
 
 script type="application/javascript" src="/assets/barcode/JOB.js"

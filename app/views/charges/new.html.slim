@@ -1,9 +1,3 @@
-javascript:
-  /* This little bit of silliness is here to ensure our js feature specs are working. Remove at will. */
-  $(document).ready(function() {
-    $('.jumbotron p:last').after("<p>Enjoy!</p>")
-  });
-
 .jumbotron
   h1 RVU Counter
   br
@@ -14,7 +8,7 @@ javascript:
     = form_for @charge do |f|
       div.field
         = f.label :pan
-        = f.number_field :name
+        = f.number_field :pan
       div.field
         = f.label :code
         = f.select :code, [["1", 1], ["2", 2]]

@@ -1,0 +1,26 @@
+javascript:
+  /* This little bit of silliness is here to ensure our js feature specs are working. Remove at will. */
+  $(document).ready(function() {
+    $('.jumbotron p:last').after("<p>Enjoy!</p>")
+  });
+
+.jumbotron
+  h1 RVU Counter
+  br
+  p Scan your barcode:
+  #container
+    canvas width="320" height="240" id="picture"
+    input id="Take-Picture" type="file" accept="image/*;capture=camera"
+    = form_for @charge do |f|
+      div.field
+        = f.label :pan
+        = f.number_field :name
+      div.field
+        = f.label :code
+        = f.select :code, [["1", 1], ["2", 2]]
+
+    p#textbit
+
+
+script type="application/javascript" src="/assets/barcode/JOB.js"
+script type="application/javascript" src="/assets/barcode/job_upload.js"

@@ -13,5 +13,5 @@ Rails.application.config.assets.version = '1.0'
 # Don't initialize the application when precompiling assets. Doing so on Heroku problematic
 # since the environment config is not available during slug completions (see user-env-compile).
 Rails.application.config.assets.initialize_on_precompile = false
-Rails.application.config.assets.precompile += %w( exif.js barcode/DecoderWorker.js barcode/job_upload.js barcode/JOB.js )
+Rails.application.config.assets.precompile += %w( exif.js DecoderWorker.js job_upload.js JOB.js )
 

@@ -2,24 +2,24 @@ require 'rails_helper'
 
 describe ChargesController do
 
-  # This should return the minimal set of attributes required to create a valid
-  # Charge. As you add validations to Charge, be sure to
-  # update the return value of this method accordingly.
   def valid_attributes
     attributes_for(:charge)
   end
 
   describe "#new" do
-    it "assigns a new candidate as @candidate" do
+    it "assigns a new charge as @charge" do
       get :new, {}
       expect(assigns(:charge)).to be_a_new(Charge)
     end
   end
 
   describe "#create" do
-    it "assigns a new candidate as @candidate" do
-      get :new, {}
-      expect(assigns(:charge)).to be_a_new(Charge)
+    describe "with valid params" do
+      it "creates a new Charge" do
+        expect {
+          post :create, { charge: valid_attributes }
+        }.to change(Charge, :count).by(1)
+      end
     end
   end
 

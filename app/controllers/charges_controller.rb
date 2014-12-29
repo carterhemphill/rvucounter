@@ -14,7 +14,6 @@ class ChargesController < ApplicationController
     if @charge.save
       redirect_to @charge, notice: "Charge was successfully created."
     else
-      flash[:notice] = "wrong"
       render action: 'new'
     end
   end

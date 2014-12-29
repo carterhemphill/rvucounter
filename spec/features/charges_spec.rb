@@ -2,11 +2,11 @@ require 'rails_helper'
 
 feature "New Charge" do
 
-  # Here's a placeholder feature spec to use as an example, uses the default driver.
-  scenario "/ should include the application name in its title" do
+  scenario "/ should hide charge form initially" do
     visit root_path
 
-    expect(page).to have_title "Rvucounter Rails"
+    expect(page).to have_selector('#new_charge', visible: false)
+
   end
 
 end

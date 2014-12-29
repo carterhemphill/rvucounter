@@ -1,8 +1,11 @@
 h1 RVU Counter
+
 #container
+  - unless @charge.errors.empty?
+    h3= @charge.errors.messages
   #barcode
     label Scan your barcode:
-    input id="Take-Picture" type="file" accept="image/*;capture=camera"
+    input id="barcode_upload" type="file" accept="image/*;capture=camera"
     canvas width="320" height="240" id="picture"
   = simple_form_for(@charge, html: { class: "charge-form form-horizontal #{@charge.errors.empty? ? '' : 'charge-errors'}" }, wrapper: :horizontal_form, \
     wrapper_mappings: { \
@@ -13,9 +16,18 @@ h1 RVU Counter
     }) do |f|
     = f.error_notification
     = f.input :pan, as: :string
-    = f.input :code, collection: 1800..1900
-    /= f.input :choices, as: :check_boxes, \
-    /   collection: ["Option one is this and that—be sure to include why it's great", "Option two can be something else and selecting it will deselect option one"]
+    /= f.input :code_number, collection: 1800..1900, :as => :radio_buttons
+
+    = f.input :code_category, collection: Code::CATEGORIES, :input_html => { :data =>  { :dynamic_selectable_url => for_category_path(':code_category'), :dynamic_selectable_target => '#charge_code_number_rvu' } }
+
+    table.table.table-hover
+      th Code #
+      th RVU
+      tbody#charge_code_number_rvu.row
+    /= f.input :code_rvu, [], :id, :name, :include_blank => true
+
+
+
     = f.button :submit
 
 /script type="application/javascript" src="/assets/JOB.js"

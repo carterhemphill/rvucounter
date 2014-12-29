@@ -1,0 +1,20 @@
+#container.row
+ = render :partial => "form", :code => @code
+
+.row
+  - unless @allCodes.nil?
+    table.code-table.table.table-hover
+      thead
+        tr
+          th Code #
+          th Category
+          th RVU
+          th
+          th
+      - @allCodes.each do |c|
+        tr
+          td= c.number
+          td= c.category
+          td= c.rvu
+          td.col-md-1= link_to 'Edit', edit_code_path(c), class: 'btn btn-default btn-mini'
+          td.col-md-1= link_to 'Destroy', code_path(c), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-mini btn-danger'

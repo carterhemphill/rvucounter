@@ -13,3 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require dynamicSelectable
+
+$(function() {
+  return $('select[data-dynamic-selectable-url][data-dynamic-selectable-target]').dynamicSelectable();
+});

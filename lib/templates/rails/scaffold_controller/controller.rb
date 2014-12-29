@@ -13,7 +13,7 @@ class <%= controller_class_name %>Controller < ApplicationController
   def show
   end
 
-  def new
+  def show
     @<%= singular_table_name %> = <%= orm_class.build(class_name) %>
   end
 
@@ -26,7 +26,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     if @<%= orm_instance.save %>
       redirect_to @<%= singular_table_name %>, notice: <%= "'#{human_name} was successfully created.'" %>
     else
-      render action: 'new'
+      render action: 'show'
     end
   end
 

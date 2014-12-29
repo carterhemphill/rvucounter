@@ -1,0 +1,12 @@
+= simple_form_for(@code, \
+          wrapper_mappings: { \
+            check_boxes: :horizontal_radio_and_checkboxes, \
+            radio_buttons: :horizontal_radio_and_checkboxes \
+          }) do |f|
+  = f.error_notification
+  = f.input :number, wrapper_html: { class: 'col-md-2' }
+  = f.input :category, collection: Code::CATEGORIES, wrapper_html: { class: 'col-md-4' }
+  = f.input :rvu, wrapper_html: { class: 'col-md-2' }
+  /= f.input :choices, as: :check_boxes, \
+  /   collection: ["Option one is this and that—be sure to include why it's great", "Option two can be something else and selecting it will deselect option one"]
+  = f.button :submit

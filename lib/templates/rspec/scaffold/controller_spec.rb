@@ -40,9 +40,9 @@ describe <%= controller_class_name %>Controller do
     end
   end
 
-  describe "#new" do
-    it "assigns a new <%= ns_file_name %> as @<%= ns_file_name %>" do
-      get :new, {}, valid_session
+  describe "#show" do
+    it "assigns a show <%= ns_file_name %> as @<%= ns_file_name %>" do
+      get :show, {}, valid_session
       expect(assigns(:<%= ns_file_name %>)).to be_a_new(<%= class_name %>)
     end
   end
@@ -57,7 +57,7 @@ describe <%= controller_class_name %>Controller do
 
   describe "#create" do
     describe "with valid params" do
-      it "creates a new <%= class_name %>" do
+      it "creates a show <%= class_name %>" do
         expect {
           post :create, { <%= ns_file_name %>: valid_attributes }, valid_session
         }.to change(<%= class_name %>, :count).by(1)
@@ -83,11 +83,11 @@ describe <%= controller_class_name %>Controller do
         expect(assigns(:<%= ns_file_name %>)).to be_a_new(<%= class_name %>)
       end
 
-      it "re-renders the 'new' template" do
+      it "re-renders the 'show' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         allow_any_instance_of(<%= class_name %>).to receive(:save).and_return(false)
         post :create, { <%= ns_file_name %>: <%= formatted_hash(example_invalid_attributes) %> }, valid_session
-        expect(response).to render_template('new')
+        expect(response).to render_template('show')
       end
     end
   end

@@ -1,4 +1,4 @@
-var takePicture = document.querySelector("#Take-Picture"),
+var takePicture = document.querySelector("#barcode_upload"),
 showPicture = document.createElement("img");
 Result = document.querySelector("#charge_pan");
 inputForm = $("#new_charge");

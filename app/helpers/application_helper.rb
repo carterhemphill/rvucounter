@@ -13,7 +13,7 @@ module ApplicationHelper
   # action name to use for the primary submit button on scaffold-created CRUD forms
   def btn_action_prefix
     case action_name
-      when 'new', 'create'
+      when 'show', 'create'
         'Create'
       when 'edit', 'update'
         'Update'
@@ -25,7 +25,7 @@ module ApplicationHelper
   # bootstrap icon name to use for the primary submit button on scaffold-created forms
   def action_icon_name
     case action_name
-      when 'new', 'create'
+      when 'show', 'create'
         'plus'
       when 'edit', 'update'
         'edit'

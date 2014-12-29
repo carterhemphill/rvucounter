@@ -1,14 +1,16 @@
-.candidate
-  .page-header.clearfix
-    h3 PAN
-    = @charge.pan
+table.table
+  thead
+    th PAN
+    th Code Type
+    th Code #
+    th Code RVU
+    th Time
+  tbody
+    tr
+      td= @charge.pan
+      td= @charge.code_category
+      td= @charge.code_number
+      td= @charge.code_rvu
+      td= @charge.created_at.to_formatted_s(:long)
 
-
-  .row-fluid
-    .basics.span5
-      h3 Code
-      = @charge.code
-
-  .row-fluid
-    .span12
-      =link_to 'Create new charge', new_charge_path, class: 'btn btn-default'
+=link_to 'New charge', new_charge_path, class: 'btn btn-default'

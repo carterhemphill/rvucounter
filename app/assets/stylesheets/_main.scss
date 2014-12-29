@@ -3,7 +3,8 @@
 }
 #barcode, #new_charge {
   float: left;
-  height: 300px;
+  height: auto;
+  overflow: visible;
   margin: 20px;
   padding: 20px;
 
@@ -13,3 +14,4 @@
 #new_charge  { display: none; }
 #new_charge.charge-errors { display: block; }
 
+.simple_form .btn { margin-top: 1.8em; }

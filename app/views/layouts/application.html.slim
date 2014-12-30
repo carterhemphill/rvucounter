@@ -15,13 +15,27 @@ html
       nav.navbar.navbar-default.navbar-fixed-top role='navigation'
         .container
           .navbar-header
-            button.button.navbar-toggle data-toggle='collapse' data-target='.navbar-collapse'
+            button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+              span.sr-only Toggle navigation/span
               span.icon-bar
               span.icon-bar
               span.icon-bar
-            a.navbar-brand href='/' Rvucounter Rails
-          .collapse.navbar-collapse
-            ul.nav.navbar-nav.navbar-right
+            a class="navbar-brand" href="#" RVUCounter
+
+          /!-- Collect the nav links, forms, and other content for toggling --
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            ul.nav.navbar-nav
+              li
+                a href="#{codes_path}" Codes
+              li.dropdown.active
+                a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+                  | Charges
+                  span.caret
+                ul.dropdown-menu role="menu"
+                  li
+                    a href="#{new_charge_path}" New Charge
+                  li
+                    a href="#{charges_path}" All Charges
 
       .container
         - flash.each do |name, msg|

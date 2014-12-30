@@ -4,13 +4,15 @@ table.table
     th Code Type
     th Code #
     th Code RVU
+    th Descriptor
     th Time
   tbody
     tr
-      td= @charge.pan
+      td= number_with_precision(@charge.pan, precision: 0)
       td= @charge.code_category
       td= @charge.code_number
       td= @charge.code_rvu
+      td= @charge.descriptor
       td= @charge.created_at.to_formatted_s(:long)
 
 =link_to 'New charge', new_charge_path, class: 'btn btn-default'

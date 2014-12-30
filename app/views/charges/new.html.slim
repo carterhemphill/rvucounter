@@ -6,7 +6,7 @@ h1 RVU Counter
   #barcode
     label Scan your barcode:
     input id="barcode_upload" type="file" accept="image/*;capture=camera"
-    canvas width="320" height="240" id="picture"
+    canvas width="20" height="20" id="picture"
   = simple_form_for(@charge, html: { class: "charge-form form-horizontal #{@charge.errors.empty? ? '' : 'charge-errors'}" }, wrapper: :horizontal_form, \
     wrapper_mappings: { \
       check_boxes: :horizontal_radio_and_checkboxes, \
@@ -16,17 +16,13 @@ h1 RVU Counter
     }) do |f|
     = f.error_notification
     = f.input :pan, as: :string
-    /= f.input :code_number, collection: 1800..1900, :as => :radio_buttons
-
     = f.input :code_category, collection: Code::CATEGORIES, :input_html => { :data =>  { :dynamic_selectable_url => for_category_path(':code_category'), :dynamic_selectable_target => '#charge_code_number_rvu' } }
 
     table.table.table-hover
       th Code #
       th RVU
       tbody#charge_code_number_rvu.row
-    /= f.input :code_rvu, [], :id, :name, :include_blank => true
-
-
+    = f.input :descriptor
 
     = f.button :submit
 

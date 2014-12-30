@@ -5,5 +5,5 @@ describe "charges/show" do
     assign(:charge, build_stubbed(:charge))
   end
 
-  
+
 end

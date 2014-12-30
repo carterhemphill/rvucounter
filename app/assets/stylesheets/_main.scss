@@ -1,17 +1,17 @@
-#container {
-  overflow: hidden;
-}
+#container { overflow: hidden; }
+.container-fluid { margin: 0 auto; float: none; }
+
 #barcode, #new_charge {
   float: left;
   height: auto;
   overflow: visible;
-  margin: 20px;
-  padding: 20px;
+  margin: 0 20px 20px 20px;
+  padding: 0 20px 20px 20px;
 
   .btn { float: right; }
 }
 
-#new_charge  { display: none; }
+//#picture  { display: none; }
 #new_charge.charge-errors { display: block; }
 
 .simple_form .btn { margin-top: 1.8em; }

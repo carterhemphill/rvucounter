@@ -1,0 +1,19 @@
+table.table
+  thead
+    th PAN
+    th Code Type
+    th Code #
+    th Code RVU
+    th Descriptor
+    th Time
+  - @charges.each do |c|
+    tbody
+      tr
+        td= number_with_precision(c.pan, precision: 0)
+        td= c.code_category
+        td= c.code_number
+        td= c.code_rvu
+        td= c.descriptor
+        td= c.created_at.to_formatted_s(:long)
+
+  =link_to 'New charge', new_charge_path, class: 'btn btn-default'

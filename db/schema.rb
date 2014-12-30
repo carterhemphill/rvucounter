@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141229213417) do
+ActiveRecord::Schema.define(version: 20141230140237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20141229213417) do
     t.string   "code_category"
     t.integer  "code_number"
     t.integer  "code_rvu"
+    t.text     "descriptor"
   end
 
   create_table "codes", force: true do |t|

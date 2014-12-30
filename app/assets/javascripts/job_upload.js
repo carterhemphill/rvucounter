@@ -1,7 +1,7 @@
 var takePicture = document.querySelector("#barcode_upload"),
 showPicture = document.createElement("img");
 Result = document.querySelector("#charge_pan");
-inputForm = $("#new_charge");
+//inputForm = $("#new_charge");
 var canvas = document.getElementById("picture");
 var ctx = canvas.getContext("2d");
 
@@ -13,7 +13,7 @@ JOB.SetImageCallback(function(result) {
         console.log(result[i]);
         tempArray.push(result[i].Value);
     }
-      inputForm.show();
+      canvas.show();
       Result.value=tempArray.join(", ");
     }else{
       if(result.length === 0) {

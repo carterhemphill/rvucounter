@@ -10,10 +10,9 @@ JOB.SetImageCallback(function(result) {
     if(result.length > 0){
       var tempArray = [];
       for(var i = 0; i < result.length; i++) {
-        console.log(result[i]);
         tempArray.push(result[i].Value);
     }
-      canvas.show();
+      $(canvas).show();
       Result.value=tempArray.join(", ");
     }else{
       if(result.length === 0) {
